@@ -1,0 +1,90 @@
+:root {
+  --gray: #e8ecf3;
+  --purple: #5823e5;
+  --white: #fff;
+  --black: #313131;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--gray);
+}
+
+.share-list {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-button {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--purple);
+  color: var(--white);
+  font-size: 1.6rem;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.share-item {
+  position: absolute;
+  transform-origin: 125px;
+  left: 0;
+  transition: 0.8s;
+  transition-delay: calc(0.1s * var(--index));
+  transform: rotate(0deg) translateX(100px);
+}
+
+.share-list.active .share-item {
+  transform: rotate(calc(360deg / 8 * var(--index)));
+}
+
+.share-link {
+  background-color: var(--white);
+  box-shadow: 0px 3px 5px 0 rgba(0, 0, 0, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  transform: rotate(calc(360deg / -8 * var(--index)));
+  opacity: 0;
+  transition: opacity 0.5s;
+  transition-delay: calc(0.1s * var(--index));
+}
+
+.share-link:hover {
+  background-color: var(--purple);
+  color: var(--white);
+}
+
+.share-list.active .share-link {
+  opacity: 1;
+}
